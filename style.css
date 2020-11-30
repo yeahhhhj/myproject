@@ -1,0 +1,544 @@
+/*******************************/
+/********* General CSS *********/
+/*******************************/
+
+body {
+  color: #797979;
+  background:	#FFEFD5;
+}
+h1,h2,h3,h4,h5,h6 {
+  color: #092a49;
+}
+a {
+  color: #454545;
+  transition: .3s;
+}
+a:hover,a:active,a:focus {
+  color: #092a49;
+  outline: none;
+  text-decoration: none;
+}
+.btn:focus,.form-control:focus {
+  box-shadow: none;
+}
+.container-fluid {
+  max-width: 1366px;
+}
+/*********** Nav Bar CSS **********/
+.navbar {
+  position: relative;
+  transition: .5s;
+  z-index: 999;
+}
+
+.navbar .navbar-brand {
+  margin: 0;
+  color: #ffffff;
+  font-size: 70px;
+  line-height: 0px;
+  font-weight: 200;
+  text-transform: uppercase;
+  font-family: 'Nerko One', cursive;
+}
+
+.navbar {
+  padding: 30px 60px;
+  background: #FFBC9B	 !important;
+}
+
+.navbar a.nav-link {
+  padding: 8px 24px;
+  font-size: 30px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: 'Nerko One', cursive;
+}
+/*********** class CSS **********/
+.classmenu {
+  position: relative;
+  margin-left: 30px;
+  font-family: 'Balsamiq Sans', cursive;
+  font-weight: bolder;
+}
+
+.classmenu .classmenu-body {
+  position: absolute;
+  top: 60px;
+  padding-left: 20px;
+  width: 100%;
+}
+
+.classmenu .classmenu-body h3 {
+  color: 	#231010;
+  font-family: 'Balsamiq Sans', cursive;
+}
+
+.classmenu .classmenu-body .btn {
+  color: #E62B00;
+}
+.ranking{
+  font-family: 'Nerko One', cursive;
+  font-size: 62px;
+  text-align:center;
+  margin-top: 50px;
+  color: #231010;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.class {
+    position: relative;
+    width: 100%;
+    padding-left: 50px;
+}
+
+.class .class-item {
+    position: relative;
+    margin-bottom: 85px;
+    margin-left: 50px;
+}
+
+.class .class-img {
+    position: relative;
+}
+
+.kind {
+    color: #D2691E;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    font-family: 'Do Hyeon', sans-serif;
+}
+.kindsub {
+    margin-bottom: 20px;
+    color: #4B4B4B;
+    font-family: 'Nanum Gothic Coding', monospace;
+    padding-right: 60px;
+    text-align: center;
+}
+
+/********* Handicraft CSS **********/
+.title{
+  font-family: 'Nerko One', cursive;
+  font-size: 62px;
+  text-align:center;
+  margin-top: 10px;
+  color: #231010;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.text{
+  font-family: 'Jua', sans-serif;
+  font-size: 62px;
+  text-align:center;
+  margin-top: 50px;
+  color: #231010;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.class_img{
+  margin-bottom: 50px;
+  margin-left: 200px;
+}
+
+/********* Footer CSS **********/
+.footer {
+    position: relative;
+    margin-top: 25px;
+    padding-top: 40px;
+    background: #FFBC9B;
+    font-family: 'Jua', sans-serif;
+}
+
+.footer .footer-contact,.footer .footer-link,  .footer .footer-newsletter {
+    position: relative;
+    margin-bottom: 25px;
+    color: #ffffff;
+}
+
+.footer .footer-contact h2{
+  position: relative;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  font-size: 22px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+.footer .footer-contact h2::after{
+  position: absolute;
+  content: "";
+  width: 400px;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background: #D2691E;
+}
+
+.footer .footer-contact p i {
+    width: 25px;
+}
+
+.footer .footer-contact .btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    height: 44px;
+    padding: 8px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #092a49;
+    background: none;
+    border-radius: 0;
+    border: 2px solid #092a49;
+    transition: .3s;
+}
+
+/********* about CSS **********/
+.section-title{
+    position: relative;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 16px;
+    margin-left: 50px;
+}
+.section-title2{
+    position: relative;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 16px;
+    margin-left: 170px;
+    margin-right: 170px;
+}
+.b-section-title{
+      font-family: 'Nerko One', cursive;
+      font-size: 35px;
+      color: #D2691E
+}
+.b2-section-title{
+    font-family: 'Nerko One', cursive;
+    font-size: 55px;
+    color: #D2691E;
+    text-align: center;
+}
+.s-section-title{
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    color: #D2691E
+}
+.i_content{
+    font-size: 15px;
+    font-family: 'Nanum Gothic Coding', monospace;
+    text-align: left;
+}
+.img{
+    border-radius: 8px;
+}
+#home_quicklinks {
+      padding: 20px 0;
+      text-align: center;
+}
+a.quicklink.link1 {
+      background:#FFBC9B;
+}
+a.quicklink {
+      display: inline-block;
+      width: 302px;
+      height: 173px;
+      position: relative;
+      margin: 90px 30px;
+}
+a.quicklink .ql_caption {
+      display: block;
+      height: 100%;
+      width: 100%;
+      position: relative;
+}
+.outer {
+      display: table;
+      position: relative;
+      vertical-align: middle;
+      text-align: center;
+      height: 100%;
+      width: 100%;
+      border-spacing: 0px;
+      padding: 0px;
+}
+.inner {
+      display: table-cell;
+      position: relative;
+      vertical-align: middle;
+      text-align: center;
+      height: 100%;
+      width: 100%;
+      border-spacing: 0px;
+      padding: 0px;
+}
+a.quicklink .ql_caption h2 {
+      margin: 0px;
+      padding: 0px;
+      text-transform: uppercase;
+      line-height: 1.46em;
+      color: #fff;
+      font-family: 'Jua', sans-serif;
+      font-size: 30px;
+      text-align: center;
+}
+a.quicklink.link1 .ql_top {
+      border-bottom-color: #FFBC9B;
+}
+a.quicklink.link1 .ql_bottom {
+      border-top-color: #FFBC9B;
+}
+.ql_top {
+      bottom: 173px;
+      border-bottom: 89px solid #ccc;
+  }
+.ql_bottom {
+      top: 173px;
+      border-top: 89px solid #ccc;
+}
+.ql_top, .ql_bottom {
+      position: absolute;
+      left: 0px;
+      width: 0px;
+      border-left: 151px solid transparent;
+      border-right: 151px solid transparent;
+}
+a.quicklink.link2 {
+      background: #FF9E7D	;
+}
+a.quicklink.link2 .ql_top {
+      border-bottom-color: #FF9E7D	;
+}
+a.quicklink.link2 .ql_bottom {
+      border-top-color: #FF9E7D	;
+}
+a.quicklink.link3 .ql_top {
+      border-bottom-color: #FFBC9B;
+}
+a.quicklink.link3 .ql_bottom {
+      border-top-color: #FFBC9B;
+}
+a.quicklink.link3 {
+      background: #FFBC9B;
+}
+a.quicklink {
+      font-size: 36px;
+      font-weight: 500;
+      text-decoration:none;
+}
+.b3-section-title{
+      font-family: 'Jua', sans-serif;
+      font-size: 35px;
+      color: #D2691E;
+      text-align: center;
+}
+
+
+/********* mypage CSS **********/
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+.profile
+{
+    font-family: 'Roboto', sans-serif;
+}
+.profile
+{
+    margin-top: 2px;
+    padding:1px;
+    display: inline-block;
+    padding-bottom: 20PX;
+}
+.divider
+{
+    border-top:1px solid rgba(0,0,0,0.1);
+}
+.emphasis
+{
+    border-top: 1px solid transparent;
+}
+.emphasis h2
+{
+    margin-bottom:0;
+}
+span.tags
+{
+    background: #1abc9c;
+    border-radius: 2px;
+    color: #f5f5f5;
+    font-weight: bold;
+    padding: 2px 4px;
+}
+.profile strong,span,div{
+    text-transform: initial;
+}
+#profile{
+    background-color: #FFFFFF;
+}
+#user-name{
+  font-size: 30px;
+}
+.profile_font{
+  font-family: 'Nanum Gothic Coding', monospace;
+  font-size: 30px;
+}
+
+/********* mypage Class CSS **********/
+.Class-tab {
+  margin-top: 2px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  margin-left: 100px;
+  display: inline-block;
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  font-family: 'Roboto', sans-serif;
+}
+.Class-tab #tabs{
+  background: #007b5e;
+  color: #eee;
+}
+.Class-tab thead{
+    background: #f3f3f3;
+    color: #333;
+    text-align: center;
+}
+.Class-tab a{
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    text-align: center;
+}
+.classtitle{
+  font-family: 'Do Hyeon', sans-serif;
+  font-size: 30px;
+}
+.link{
+  text-align: center;
+}
+
+.card{
+  border-radius: 16px;
+  margin-bottom: 15px;
+  box-shadow: 0 3px 5px rgba(0,0,0,.1);
+  margin-left: 170px;
+  margin-right: 170px;
+}
+
+/********* login Class CSS **********/
+.login-page{
+  font-family: 'Sarabun', sans-serif;
+}
+
+.login-page{
+  width: 360px;
+  padding: 10% 0 0;
+  margin: auto;
+}
+
+.form{
+  position: relative;
+  z-index: 1;
+  background: rgba(248, 248, 248, 0.8);
+  max-width: 560px;
+  margin: 0 auto 300px;
+  padding: 45px;
+  text-align: center;
+}
+.form input{
+  font-family: "Roboto", sans-serif;
+  outline: 1;
+  background: #f2f2f2;
+  width : 100%;
+  border : 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.form button{
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #6c756d;
+  width : 100%;
+  border : 0;
+  padding : 15px;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+}
+/*
+.form button : hover, .login_form button: active{
+  background: #43A047;
+} 에러
+*/ 
+.form .message{
+  margin: 15px 0 0;
+  font-size: 12px;
+}
+.form .message a{
+  color: #c8cec8;
+  text-decoration: none;
+}
+.form .register-form {
+  display : none;
+}
+
+/********* mainpage CSS **********/
+.slideshow-container{
+  box-sizing: border-box;
+}
+.slideshow-container{
+  font-family: Verdana, sans-serif;
+}
+.mySlides{
+  display: none;
+}
+.main_img {
+  vertical-align: middle;
+}
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 10s ease;
+}
+.active {
+  background-color: #717171;
+}
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
