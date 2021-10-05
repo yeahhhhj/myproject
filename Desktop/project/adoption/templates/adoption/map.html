@@ -1,0 +1,238 @@
+{% extends 'adoption/base.html' %}
+{% load static %}
+
+{% block script %}
+ <script>
+
+ function Test1() {
+
+    var bt1 = document.getElementById(1);
+	var bt2 = document.getElementById(2);
+    if (bt1.style.display != "inline-block") {
+     bt1.style.display = "inline-block";
+    } else {
+     bt1.style.display = "none";
+    }
+	if (bt2.style.display != "block") {
+     bt2.style.display = "block";
+    } else {
+     bt2.style.display = "none";
+    }
+}
+
+
+function kCalendar(id, date) {
+	var kCalendar = document.getElementById(id);
+	
+	    if( typeof( date ) !== 'undefined' ) {
+		    date = date.split('-');
+		    date[1] = date[1] - 1;
+		    date = new Date(date[0], date[1], date[2]);
+    	} else {
+		    var date = new Date();
+	    }
+	    var currentYear = date.getFullYear();
+	    var currentMonth = date.getMonth() + 1;
+	    var currentDate = date.getDate();
+	    date.setDate(1);
+	
+	    var currentDay = date.getDay();
+	    var dateString = new Array('sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat');
+	    var lastDate = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+	    if( (currentYear % 4 === 0 && currentYear % 100 !== 0) || currentYear % 400 === 0 )
+		    lastDate[1] = 29;
+	    var currentLastDate = lastDate[currentMonth-1];
+	    var week = Math.ceil( ( currentDay + currentLastDate ) / 7 );
+	
+	    if(currentMonth != 1)
+		    var prevDate = currentYear + '-' + ( currentMonth - 1 ) + '-' + currentDate;
+	    else
+		    var prevDate = ( currentYear - 1 ) + '-' + 12 + '-' + currentDate;
+	
+	    if(currentMonth != 12)  
+		    var nextDate = currentYear + '-' + ( currentMonth + 1 ) + '-' + currentDate;
+	    else
+		    var nextDate = ( currentYear + 1 ) + '-' + 1 + '-' + currentDate;
+
+	    if( currentMonth < 10 )
+		    var currentMonth = '0' + currentMonth;
+
+    	var calendar = '';
+	    calendar += '<div id="header">';
+	    calendar += '<span><a href="#" class="button left" onclick="kCalendar(\'' +  id + '\', \'' + prevDate + '\')"><</a></span>';
+	    calendar += '<span id="date">' + currentYear + '년 ' + currentMonth + '월</span>';
+	    calendar += '<span><a href="#" class="button right" onclick="kCalendar(\'' + id + '\', \'' + nextDate + '\')">></a></span>';
+	    calendar += '</div>';
+	    calendar += '<table border="0" cellspacing="0" cellpadding="0">';
+	    calendar += '<caption>' + currentYear + '년 ' + currentMonth + '월 달력</caption>';
+	    calendar += '<thead>';
+	    calendar += '<tr>';
+	    calendar += '<th class="sun" scope="row">일</th>';
+	    calendar += '<th class="mon" scope="row">월</th>';
+	    calendar += '<th class="tue" scope="row">화</th>';
+	    calendar += '<th class="wed" scope="row">수</th>';
+	    calendar += '<th class="thu" scope="row">목</th>';
+	    calendar += '<th class="fri" scope="row">금</th>';
+	    calendar += '<th class="sat" scope="row">토</th>';
+	    calendar += '</tr>';
+	    calendar += '</thead>';
+	    calendar += '<tbody>';
+	
+	var dateNum = 1 - currentDay;
+	
+	for(var i = 0; i < week; i++) {
+		calendar += '			<tr>';
+		for(var j = 0; j < 7; j++, dateNum++) {
+			if( dateNum < 1 || dateNum > currentLastDate ) {
+				calendar += '<td class="' + dateString[j] + '"> </td>';
+				continue;
+			}
+			calendar += '<td class="' + dateString[j] + '">' + dateNum + '</td>';
+		}
+		calendar += '</tr>';
+	}
+	
+	calendar += '</tbody>';
+	calendar += '</table>';
+	kCalendar.innerHTML = calendar;
+}
+</script>
+{% endblock script %}
+{% block content %}
+<hr>
+<div id="rightimg">
+</div>
+<div class="donation">
+    </div>
+   <br><br>
+    <div id="Btn1" style="text-align:center; ">
+        <input style="border:0px; outline: 0px; "class="img-button" type="button"onclick="javascript:Test1()">
+    </div>
+    
+	<div style="text-align:center;">
+        <div id="1" style=" font-family: 'Alfa Slab One', cursive; display:none;">
+            <h2 style="color:red;" >Don't</h2>
+        </div>
+        <div style=" font-family: 'Alfa Slab One', cursive; display:inline-block;">
+            <h2>&nbsp;Buy a Pet</h2>
+        </div>
+        <div id="2" style="text-align:center; font-family: 'Alfa Slab One', cursive;  display:none; ">
+            <h2 style="color:rgb(46, 70, 150);" >Adopt one.<h2>
+        </div>
+    </div>
+  <br>
+<br>
+
+
+<div style="text-align:center;"
+    <div style="display:inline-block;">
+        <div id="map" style="width:500px; height: 600px; display:inline-block;" ></div>
+            <script id="sc">
+                function myMap() {
+                    var mapCanvas = document.getElementById("map");
+                    var Daejeon = new google.maps.LatLng(36.3631, 127.2845);
+                    var Yongin = new google.maps.LatLng(37.2433, 127.1569);
+                    var Gwangju = new google.maps.LatLng(35.2224,126.8794);
+                    var Busan = new google.maps.LatLng(35.1514,128.9374);
+					var Moon = new google.maps.LatLng(36.3609,127.9488);
+
+                    var mapOptions = {
+                  	center: Moon ,
+                        zoom: 7.4
+                    };
+
+                    var map = new google.maps.Map(mapCanvas, mapOptions);
+
+                    var marker = new google.maps.Marker({
+	                position:Daejeon,
+                    animation:google.maps.Animation.BOUNCE,
+	                icon: '{% static 'images/dog2.png'%}'
+                    });
+
+                    var marker2 = new google.maps.Marker({
+                 	position:Busan,
+                    animation:google.maps.Animation.BOUNCE,
+	                icon: '{% static 'images/dog3.png'%}'
+                    });
+
+                    var marker3 = new google.maps.Marker({
+                    position:Gwangju,
+                    animation:google.maps.Animation.BOUNCE,
+                    icon: '{% static 'images/dog4.png'%}'
+                    });
+
+                    var marker4 = new google.maps.Marker({
+                    position:Yongin,
+                    animation:google.maps.Animation.BOUNCE,
+                    icon: '{% static 'images/dog5.png'%}'
+                    });
+
+                    marker.setMap(map);
+                    marker2.setMap(map);
+                    marker3.setMap(map);
+                    marker4.setMap(map);
+                }
+
+                </script>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOu6FM_RPoE9vYwx-JrjCZoM6leGQtSgo&callback=myMap"></script>
+
+                <div style="display:inline-block; ">
+                        <div style ="margin-left:45px; text-align:center;">
+                            <div id ="dea">
+                            </div>
+                            <div style ="display:inline-block; text-align:left;">
+                                <a class ="Shelter" href="https://www.daejeon.go.kr/ani/index.do">Daejeon Animal Shelter</a>
+                                <p>대전광역시 유성구 갑동 327-56</p>
+                                <p>(042)825-1118 / (농협)352-1025-4087-63</p>
+                            </div>
+                        </div>
+
+
+                        <div style ="margin-left:45px; text-align:center; ">
+                            <div id ="yon">
+                            </div>
+                            <div  style ="display:inline-block; text-align:left;">
+                                <a class="Shelter" href="http://www.instagram.com/yongin_pet">Yongin Animal Shelter</a>
+                                <p>경기도 용인시 처인구 중부대로 1074-1</p>
+                                <p>(031)324-3463 / (농협)302-0431-8577-91</p>
+                            </div>
+                        </div>
+
+
+                        
+                        <div style ="margin-left:45px; text-align:center; ">
+                            <div  id ="gan">
+                            </div>
+                                <div style ="display:inline-block; text-align:left;" >
+                                    <a class ="Shelter" href="http://www.kcanimal.or.kr/">Gwangju Animal Shelter</a>
+                                    <p>광주 북구 본촌마을길 27 (본촌동 378-6)</p>
+                                    <p>(062)571-2808 / (농협) 351-1131-3335-53</p>
+                                </div>
+                        </div>
+
+                    <div style ="margin-left:45px; text-align:center; ">
+                        <div id ="bu">
+                        </div>
+                        <div style ="display:inline-block; text-align:left;">
+                            <a class ="Shelter" href="https://cafe.naver.com/busananimal119">Busan Animal Shelter</a>
+                            <p>부산광역시 강서구 맥도강변길 752-15</p>
+                            <p>(051)832-7119 / (부산은행)101-2053-1801-05</p>
+                        </div>
+                    </div><br>
+                </div> 
+    </div>
+</div>
+<br><br><br><br>
+<div style ="text-align:center; " >
+    <div style=" color :rgb(102,90,87); font-size : 30px; font-family: 'Alfa Slab One', cursive;">
+       <p>Please check your schedule and <br> participate in the volunteer work!</p>
+    </div><br>
+    <div style ="display:inline-block; "id="kCalendar"></div>
+    <script>
+         window.onload = function () {
+         kCalendar('kCalendar');
+        };
+    </script>  
+</div> <br><br><br>
+
+{% endblock content %}

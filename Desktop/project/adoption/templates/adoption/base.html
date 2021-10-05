@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SMILE DOG</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo&display=swap&subset=korean" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Suez+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Jua&display=swap" rel="stylesheet">
+        <link href="'https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+        {% block link %}
+        {% endblock link %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOu6FM_RPoE9vYwx-JrjCZoM6leGQtSgo&callback=myMap"></script>
+        <script type = "text/javascript">
+            google.charts.load('current', {packages: ['corechart','line']});  
+        </script>
+        {% block script %}
+        {% endblock script %}
+
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/adoption.css' %}">
+        <link type="text/css" href="css/adoption.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div style="text-align: right; padding: 20px;">
+            {% if user.is_active %}
+            <p><strong>{{ user.username }}</strong> 님 안녕하세요.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'logout' %}">LOGOUT</a></p>
+            {% else %}
+            <p>로그인하지 않으셨습니다.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'login' %}">LOGIN</a>&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'accounts:signup' %}">SIGN UP</a>
+            </p>
+            {% endif %}
+        </div>
+
+        <header id="header" class="fixed-top">
+            <div class="container d-flex align-items-center">
+
+            <h1 class="logo mr-auto"><a class="logo mr-auto" href="{% url 'home' %}">Smile Dog</a></h1>
+
+            <!-- Start Nav -->
+            <nav class="nav-menu d-none d-lg-block">
+                <div class="navbar-header">
+                </button>
+                </div>
+                <ul class="nav navbar-nav navbar-center">
+                <li><a href="{% url 'introduce' %}">Introduce</a></li>
+                <li><a href="{% url 'post_list' %}">Adoption Application</a></li>
+                <li><a href="{% url 'review_post_list' %}">Adoption Review</a></li>
+                <li><a href="{% url 'protection_post_list' %}">Temporary Protection Diary</a></li>
+                <li><a href="{% url 'map' %}">Volunteer and Donation</a>
+                </li>
+                </ul>
+            </nav>
+            </div>
+        </header>
+
+        {% block content %}
+        {% endblock content %}
+
+        <footer id="footer">
+            <div class="footer-top">
+                <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-6 col-md-6 footer-contact">
+                    <h4>Smile Dog</h4>
+                    <p>대표 : (34150) 대전광역시 유성구 갑동로15번길 20-39 (갑동) <br><br>
+                        <strong>Phone:</strong>042-825-1118<br>
+                    </p>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 footer-links">
+                    <h4>Smile Dog Services Links</h4>
+                    <ul>
+                        <li><a href="{% url 'introduce' %}">Introduce</a></li>
+                        <li><a href="{% url 'post_list' %}">Adoption Application</a></li>
+                        <li><a href="{% url 'review_post_list' %}">Adoption Review</a></li>
+                        <li><a href="{% url 'protection_post_list' %}">Temporary Protection Diary</a></li>
+                        <li><a href="{% url 'map' %}">Volunteer and Donation</a></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="container d-md-flex py-4">
+                <div class="mr-md-auto text-center text-md-left">
+                <div class="copyright">
+                    &copy; Copyright <strong>윤이버셜'z'</strong>. ALL RIGHTS RESERVED.
+                </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

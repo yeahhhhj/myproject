@@ -1,0 +1,40 @@
+{% extends 'adoption/base.html' %}
+
+{% block content %}
+<hr>
+    <div class="applications">
+    </div>
+    <div class="container">
+        <div class="row">
+            {% for  protection_post in protections %}
+                <div style = "margin-top : 30px; " class="col-lg-3 col-md-3">
+                    <h3 style="text-align: center; font-size : 25px; font-family: 'Do Hyeon', sans-serif;" ><a id="protecttitle" href="{% url 'protection_detail' protection_post.id %}">{{protection_post.protection_title}}</a></h3>
+                    {% if protection_post.protection_image %}
+                        <img src="{{protection_post.protection_image.url}}" width="260px" height="260px">
+                    {% endif %}
+                    <br><br>
+                    <p style="text-align: center; font-family: 'Do Hyeon', sans-serif;" >{{protection_post.protection_author}}</p>
+                    <p style="text-align: center; font-family: 'Do Hyeon', sans-serif;">{{protection_post.protection_created_date}} {{protection_post.protection_created_date | timesince }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <br><br>
+     <a class="newpost1" style="font-size:15px; margin-left: 1250px; font-family: 'Do Hyeon', sans-serif;" href="{% url 'protection_post_new' %}">Posting</a>
+    
+    <hr>
+    <div id="pagess" style="font-size : 16px; text-align : center; font-family: 'Do Hyeon', sans-serif; ">
+    {% if protections.has_previous %}
+    <a href="?protection_page=1"> << </a>
+    <a href="?protection_page={{protections.previous_page_number}}"> < </a>
+    {% endif %}
+    <span>{{protections.number}}</span>
+    <span>/</span>
+    <span>{{protections.paginator.num_pages}}</span>
+    {% if protections.has_next %}
+    <a href="?protection_page={{protections.next_page_number}}"> > </a>
+    <a href="?protection_page={{protections.paginator.num_pages}}"> >> </a>
+    {% endif %}
+    </div>
+    <br>
+{% endblock content %}

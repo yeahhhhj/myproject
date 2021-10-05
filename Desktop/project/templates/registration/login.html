@@ -1,0 +1,35 @@
+{% extends 'adoption/base.html' %}
+
+
+{% block content %}
+
+    <div>
+        <br><h1 style =" color: orange; font-size : 30px; text-align : center; font-family: 'Alfa Slab One', cursive; text-align : center; ">Login</h1> <br>
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div style="text-align :center;">
+       <div style="border: 3px dotted orange;  padding: 0px 30px 20px 30px;  display:inline-block;">
+     <br><br><div style = " text-align :center;"class="form-group">
+                <label style = "font-size : 15px;  color :rgb(255, 180, 19); display: inline;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input style = "border-radius: 15px; display: inline;  width : 200px;" class="form-control" id="{{ form.username.id_for_label }}" maxlength="15" name="{{ form.username.html_name }}" type="text" />
+             </div>
+        <br><div style = "text-align :center;"  class="form-group">
+                <label style = " font-size : 15px;  color :rgb(255, 180, 19); display: inline;" >Password &nbsp; &nbsp; </label>
+                <div style = "text-align :center; display :inline">
+                <input style = "border-radius: 15px; display: inline; width : 200px;" class="form-control" id="{{ form.password.id_for_label }}" maxlength="120" name="{{ form.password.html_name }}" type="password" />
+                </div>
+            </div>
+    </div>
+      </div>
+              {% if form.errors %}
+              <br>
+        <p style ="text-align : center;">ID or password is wrong.</p>
+        {% endif %}
+        <br> <br>
+            <div class="wrap"  style ="text-align : center;">  
+            <button class="button" type="submit">Login</button>
+            </div>
+            <br><br>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,30 @@
+{% extends 'adoption/base.html' %}
+
+{% block content %}
+    <hr>
+     <div id="rightimg">
+</div>
+    <div style="text-align:center; ">
+        <div style="display: inline-block; text-align: center;  padding: 40px; width: 800px;">
+            <h3 style="font-family: 'Do Hyeon', sans-serif;"> {{review_post.review_title}}</h3>
+            <div style="text-align: right;">
+                <p>{{review_post.review_author}}</p>
+                <p>{{review_post.review_created_date}}</p><br><br>
+            </div>
+            <div>
+                {% if review_post.review_image %}
+                    <img src="{{review_post.review_image.url}}" width="700px">
+                {% endif %} <br><br>
+                <p>{{review_post.review_text | linebreaks}}</p>  <hr>
+            </div><br>
+            <div style ="text-align:right">
+            {% if review_post.review_author == user or user.is_superuser %}
+                <a class="detail" href="{% url 'review_post_edit' review_post.id %}">수정하기</a>
+                <a class="detail"href="{% url 'review_post_delete' review_post.id %}">삭제하기</a>
+            {% endif %}
+            <a class="detail"href="{% url 'review_post_list' %}">목록으로</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

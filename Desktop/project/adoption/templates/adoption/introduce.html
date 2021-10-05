@@ -1,0 +1,80 @@
+{% extends 'adoption/base.html' %}
+
+{% block content %}
+<hr>
+<section id="introduce" class="introduce">
+    
+    <div class="section-title">
+        <h2>Purpose of establishment</h2>
+    </div>
+    <div class="image">
+    </div>
+    <p class="i_content"> 유기견들의 생명과 안전을 보호, 관리하고 재입양을 주선하여 생명존중에 대한 정서함양에 이바지하고<br> 전염병 방지와 위생적인 생활환경 조성을 위해 설립되었습니다. </p>
+
+    <div id = "container" style = "width: 900px; height: 400px; margin: 0 auto"></div>
+    <script language = "JavaScript">
+        function drawChart() {
+                // Define the chart to be drawn.
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Month');
+                data.addColumn('number', 'abandoned    dog');
+                
+                data.addRows([
+                ['2011',  55902],
+                ['2012',  59168],
+                ['2013',  62119],
+                ['2014',  59180],
+                ['2015',  59663],
+                ['2016',  63602],
+                ['2017',  74337],
+                ['2018',  91797]
+                ]);
+                
+                // Set chart options
+                var options = {'title' : 'Number of abandoned dogs from 2011 to 2018',
+                hAxis: {title: 'Month'},
+                vAxis: {title: 'Number of abandoned dogs'}, 
+                'height':400,
+                colors: ['#5F4C0B']
+                };
+
+                // Instantiate and draw the chart.
+                var chart = new google.visualization.LineChart(document.getElementById('container'));
+                chart.draw(data, options);
+        }
+        google.charts.setOnLoadCallback(drawChart);
+    </script>
+    <div class = "i_content">
+        연간 유기견 발생량은 꾸준히 늘어나고 있습니다. <br>주인에 의해 유기된 유기견은 길에서 객사하거나, 안락사될 운명에 처해집니다.
+    </div>
+
+    <section id="procedure" class="procedure">
+        <div class="container">
+            <div class="section-title">
+                <h2>Procedure for protecting abandoned dogs</h2>
+            </div>
+            <div class="row">
+                <div id="procedure1" class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                
+                </div>
+                <div id="procedure2" class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                    
+                </div>
+                <div id="procedure3" class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                    
+                </div>
+                <div id="procedure4" class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                    
+                </div>
+                <div id="procedure5" class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                    
+                </div>
+                <div id="procedure6"  class="col-lg-2 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                <br>  
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+{% endblock content %}

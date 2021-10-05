@@ -1,0 +1,40 @@
+{% extends 'adoption/base.html' %}
+
+{% block content %}
+<hr>
+<div class="application">
+    </div>
+    <div class="container">
+        <div class="row">
+            {% for  review_post in reviews %}
+                <div style = "margin-top : 30px; " class="col-lg-3 col-md-3">
+                    <h3 style="text-align: center; font-size : 25px; font-family: 'Do Hyeon', sans-serif;" ><a id="reviewtitle" href="{% url 'review_detail' review_post.id %}">{{review_post.review_title}}</a></h3>
+                    {% if review_post.review_image %}
+                        <img src="{{review_post.review_image.url}}" width="260px" height="260px">
+                    {% endif %}
+                    <br><br>
+                    <p style="text-align: center; font-family: 'Do Hyeon', sans-serif;" >{{review_post.review_author}}</p>
+                    <p style="text-align: center; font-family: 'Do Hyeon', sans-serif;">{{review_post.review_created_date}} {{review_post.review_created_date | timesince }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <br><br>
+     <a class="newpost1" style="font-size:15px; margin-left: 1200px; font-family: 'Do Hyeon', sans-serif;" href="{% url 'review_post_new' %}">Posting</a>
+    <hr>
+    
+    <div id="pagess" style="font-size : 16px; text-align : center; font-family: 'Do Hyeon', sans-serif; ">
+    {% if reviews.has_previous %}
+    <a href="?review_page=1"> << </a>
+    <a href="?review_page={{reviews.previous_page_number}}"> < </a>
+    {% endif %}
+    <span>{{reviews.number}}</span>
+    <span>/</span>
+    <span>{{reviews.paginator.num_pages}}</span>
+    {% if reviews.has_next %}
+    <a href="?review_page={{reviews.next_page_number}}"> > </a>
+    <a href="?review_page={{reviews.paginator.num_pages}}"> >> </a>
+    {% endif %}
+    </div>
+    <br>
+{% endblock content %}

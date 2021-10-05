@@ -1,0 +1,22 @@
+{% extends 'adoption/base.html' %}
+
+{% block content %}
+<hr>
+<h2 style="font-family: 'Alfa Slab One', cursive; text-align : center;"> - Adoption Application - </h2> <br>
+<div style="text-align: center;">
+    <div class="form-group" style="display: inline-block; text-align: center; border: 3px dotted rgb(97, 62, 11); padding: 40px;">
+        <form style="font-family: 'Do Hyeon', sans-serif;" method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div style="text-align: left; width: 800px;">
+                {{ form.as_p }}
+            </div>
+            <br>
+            <a id = "cancel" class="btn-light" href="{% url 'post_list' %}">취소</a>
+            <button  type="submit" class="btn-light">작성</button>
+        </form>
+        
+    </div>
+</div>
+<br><br>
+
+{% endblock content %}

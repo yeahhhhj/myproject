@@ -1,0 +1,16 @@
+{% extends 'adoption/base.html' %}
+{% block content %}
+    <br><div style =" text-align :center;">
+        <h1 style =" color:rgb(250, 142, 142); font-size : 30px; font-family: 'Alfa Slab One', cursive; text-align :center;" >Sign up</h1> <br>
+        <div style = "text-align : center;">
+        <form style=" border: 3px dotted rgb(250, 142, 142); padding: 30px 30px 30px 30px; display : inline-block; font-family: 'Francois One', sans-serif; text-align : left;" method="POST" action="{% url 'accounts:signup' %}">
+            {% csrf_token %}
+            {{ userform.as_p }} 
+            </div> <br><br>
+          <div class="wraps"  style ="text-align : center;"> 
+            <button class="buttons" type="submit">Sign up</button>
+            </div>
+        </form>
+    </div>
+    <br><br>
+{% endblock content %}

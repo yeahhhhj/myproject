@@ -1,0 +1,40 @@
+{% extends 'adoption/base.html' %}
+
+{% block content %}
+<hr>
+<div class="applicationss">
+    </div>
+    <div class="container">
+        <div class="row">
+            {% for  adoption_post in adoptions %}
+                <div style = "margin-top : 30px; " class="col-lg-3 col-md-3">
+                    <h3 style="text-align: center; font-size : 25px; font-family: 'Do Hyeon', sans-serif;" ><a id="adopttitle" href="{% url 'detail' adoption_post.id %}">{{adoption_post.title}}</a></h3>
+                    {% if adoption_post.image %}
+                        <img src="{{adoption_post.image.url}}" width="260px" height="260px">
+                    {% endif %}
+                    <br><br>
+                     <p style="text-align: center; font-family: 'Do Hyeon', sans-serif;" >{{adoption_post.author}}</p>
+                    <p style="text-align: center; font-family: 'Do Hyeon', sans-serif;">{{adoption_post.created_date}} {{adoption_post.created_date | timesince }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <br><br>
+     <a class="newpost1" style="font-size:15px; margin-left: 1200px; font-family: 'Do Hyeon', sans-serif;" href="{% url 'post_new' %}">Posting</a>
+    <hr>
+    
+    <div style="font-size : 16px; text-align : center; font-family: 'Do Hyeon', sans-serif; ">
+    {% if adoptions.has_previous %}
+    <a class="pagess" href="?adoption_page=1"> << </a>
+    <a class="pagess" href="?adoption_page={{adoptions.previous_page_number}}"> < </a>
+    {% endif %}
+    <span>{{adoptions.number}}</span>
+    <span>/</span>
+    <span>{{adoptions.paginator.num_pages}}</span>
+    {% if adoptions.has_next %}
+    <a class="pagess" href="?adoption_page={{adoptions.next_page_number}}"> > </a>
+    <a class="pagess" href="?adoption_page={{adoptions.paginator.num_pages}}"> >> </a>
+    {% endif %}
+    </div>
+    <br>
+{% endblock content %}

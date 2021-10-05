@@ -1,0 +1,102 @@
+{% extends 'adoption/base.html' %}
+
+{% block content %}
+    <hr>
+      <div id="rightimg">
+</div>
+    <div style="text-align:center;  ">
+        <div style="display: inline-block; text-align: center;  padding: 40px; width: 800px; ">
+            <h3 style="font-family: 'Do Hyeon', sans-serif;"> {{adoption_post.title}}</h3>
+            <div style="text-align: right;">
+                <p>{{adoption_post.author}}</p>
+                <p>{{adoption_post.created_date}}</p><br><br>
+            </div>
+            <div >
+                {% if adoption_post.image %}
+                    <img src="{{adoption_post.image.url}}" width="700px">
+                {% endif %} <br><br>
+                <p >{{adoption_post.text | linebreaks}}</p>  <hr>
+            </div><br>
+            <div style ="text-align:right">
+            {% if adoption_post.author == user or user.is_superuser %}
+                <a class="detail" href="{% url 'post_edit' adoption_post.id %}">수정하기</a>
+                <a class="detail"href="{% url 'post_delete' adoption_post.id %}">삭제하기</a>
+            {% endif %}
+            <a class="detail"href="{% url 'post_list' %}">목록으로</a>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div style="text-align:center; ">
+        <div style="display: inline-block; text-align: center; border: 3px solid brown; padding: 40px;">
+            <div class="form-group">
+                <h4 style="font-family: 'Alfa Slab One', cursive;">Apply form</h4> <br>
+                <div style="text-align: center;">
+                    <div class="form-group" style="display: inline-block; text-align: center; border: 1px solid brown; padding: 40px;">
+                        <form method = "POST" action="{% url 'apply' adoption_post.id %}">
+                            {% csrf_token %}
+                            <div style="text-align: left; width: 800px;">
+                                {{ apply_form.as_p }}
+                            </div>
+                            <div class="wrapss"  style ="text-align : center;">  
+                              <button class="buttonss" type="submit">Apply</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div style="text-align:center;">
+       <div style="width : 800px; display:inline-block;">
+          <div style="text-align:left;">
+            <div style="display:inline-block; text-align:left; ">
+                <p style="font-size : 20px;">Comments</p>
+             </div>
+             </div>   
+              <hr>
+            <div style="font-size : 15px; display:inline-block; text-align:right;">
+                <p style=" text-align:right;">입양 지원 {{ adoption_post.applys.count }} 개</p>
+            </div>
+        </div>
+        <br>
+        <div style="display:inline-block;">
+        <table border="1">
+            <th  style="width:50px;" class="tabless">Name</th>
+            <th  style="width:50px;"  class="tabless" >Address</th>
+            <th style="width:50px;" class="tabless">Age</th>
+            <th style="width:50px;" class="tabless">Job</th>
+            <th style="width:50px;" class="tabless" >Gender</th>
+            <th style="width:50px;" class="tabless">Phone</th>
+            <th style="width:50px;" class="tabless">House</th>
+            <th style="width:50px;" class="tabless">Housemate</th>
+            <th style="width:50px;" class="tabless">Pets</th>
+            <th style="width:50px;" class="tabless">ID</th>
+            <th style="width:50px;" class="tabless">Date</th>
+            <th style="width:50px;" class="tabless">Cancel</th>
+            {% for apply in adoption_post.applys.all %}
+                <tr>
+                    {% if apply.nickname == user or user.is_superuser or user == adoption_post.author %}
+                        <td >{{ apply.apply_name }}</td>
+                        <td>{{ apply.apply_address }}</td>
+                        <td>{{ apply.apply_age }}</td>
+                        <td>{{ apply.apply_job }}</td>
+                        <td>{{ apply.apply_gender }}</td>
+                        <td>{{ apply.apply_phone }}</td>
+                        <td>{{ apply.apply_house }}</td>
+                        <td>{{ apply.apply_housemate }}</td>
+                        <td>{{ apply.apply_pets }}</td>
+                        <td>{{ apply.nickname }}</td>
+                        <td>{{ apply.apply_created_date }}</td>
+                        <td><a href = "{% url 'apply_delete' apply_id=apply.id %}" onclick="return confirm("정말 취소하시겠습니까?")">신청 취소</a></td>
+                    {% endif %}
+                </tr>
+            {% empty %}
+            <p>아무신청이 없습니다.</p>
+            {% endfor %}
+        </table>
+        </div>
+        </div>
+    </div>
+<br><br>
+{% endblock content %}
